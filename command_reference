@@ -1,0 +1,25 @@
+Various commands commonly used
+-----------------------------------------------
+sudo raspi-config
+    Initial configuration after installing the image
+sudo apt-get update
+    Update packages
+sudo apt-get upgrade
+    Upgrade packages
+apt-cache search xxxxx
+    Search for packages
+dpkg --get-selections
+    List installed packages
+dpkg -L name
+    List files in Installed Package
+dpkg -c filename.deb
+    List files in Installed Package
+dpkg-query -S filename
+    Check if package owns file
+apt-cache show xxxx
+    Show package information
+sudo apt-get install xxxx
+    Install package
+sudo apt-get remove xxxx
+    Remove package
+
