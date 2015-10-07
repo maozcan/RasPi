@@ -1,0 +1,48 @@
+Various commands commonly used
+-----------------------------------------------
+sudo raspi-config
+    Initial configuration after installing the image
+sudo apt-get update
+    Update packages
+sudo apt-get upgrade
+    Upgrade packages
+sudo apt-get dist-upgrade
+    Upgrade distribution
+apt-cache search xxxxx
+    Search for packages
+dpkg --get-selections
+    List installed packages
+dpkg -L name
+    List files in Installed Package
+dpkg -c filename.deb
+    List files in Installed Package
+dpkg-query -S filename
+    Check if package owns file
+apt-cache show xxxx
+    Show package information
+sudo apt-get install xxxx 
+    Install package.. Add -y after apt-get to confirm installation of packages. multiple packages may be installed at once
+sudo apt-get remove xxxx
+    Remove package
+passwd
+    Change the current user's password
+sudo passwd root
+    Change root user password
+sudo sync
+
+sudo reboot
+    Reboot system
+sudo halt
+    Shutdown system
+wget http://xxx.com/yyy.tar.gz
+    Download a file to current directory
+tar xvzf yyyy.tar.gz
+    Untar yyyy.tar.gz to current directory
+ps ax | grep avahi
+    Check if Avahi service is installed/running
+sudo service avahi-daemon status
+    Check the status of avahi daemon
+
+
+
+
