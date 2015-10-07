@@ -1,0 +1,131 @@
+
+sudo nano /etc/network/interfaces
+---------------------------------
+auto lo
+iface lo inet loopback
+iface eth0 inet dhcp
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+address 192.168.1.11
+netmask 255.255.255.0
+broadcast 192.168.1.255
+gateway 192.168.1.1
+wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+iface default inet dhcp
+
+
+
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+-------------------------------------------------
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+# ap_scan can be 0, 1, or 2. Some sources say to use 2 but it did not work for me. 1 did.
+ap_scan=1
+eapol_version=1
+network={
+        ssid="SSID"
+        # This is needed for hidden SSIDs
+        scan_ssid=1
+        mode=0
+        psk="wifi-password"
+        # RSN for WPA2 or WPA for WPA1
+        proto=RSN
+        # WPA-PSK or WPA-EAP
+        key_mgmt=WPA-PSK
+        # CCMP for AES or TKIP for TKIP.
+        pairwise=CCMP
+        # OPEN for WPA1/2 or SHARED or LEAP
+        auth_alg=OPEN
+}
+
+
+sudo nano /etc/resolv.conf
+--------------------------
+nameserver 8.8.8.8
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> From OctoPi Setup
+sudo nano /etc/network/interfaces
+---------------------------------
+auto lo
+iface lo inet loopback
+
+auto eth0
+allow-hotplug eth0
+iface eth0 inet manual
+
+auto wlan0
+allow-hotplug wlan0
+# iface wlan0 inet manual
+# wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+auto wlan1
+allow-hotplug wlan1
+# iface wlan1 inet manual
+# wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+source /boot/octopi-network.txt
+
+
+
+>>>>>
+sudo nano /boot/octopi-network.txt
+----------------------------------
+# You can use this file to manually set up your network configuration.
+#
+# This file is included into /etc/network/interfaces, so anything that
+# works by editing that file is also possible here.
+
+### WIFI CONFIGURATION ######################################################
+# The three segments below should cover you in most cases if you run
+# a wifi network that uses either WPA/WPA2 or WEP encryption.
+#
+# Just uncomment the lines prefixed with a single # of the configuration
+# that matches your wifi setup and fill in SSID and passphrase.
+
+## WPA/WPA2 secured
+iface wlan0 inet manual
+    wpa-ssid "SSID"
+    wpa-psk "wifi-password"
+
+## WEP secured
+#iface wlan0 inet manual
+#    wireless-essid "put SSID here"
+#    wireless-key "put password here"
+
+## Open/unsecured
+#iface wlan0 inet manual
+#    wireless-essid "put SSID here"
+#    wireless-mode managed
+
+### WIRED CONFIGURATION #####################################################
+# The following segment allows you to configure your wired connection
+# with a static IP.
+#
+# Just uncomment the lines prefixed with a single #. Then connect
+# a cable to the Pi and another system, e.g. a Laptop, and set that
+# other system's network configuration to:
+#
+#   address:   192.168.250.10
+#   netmask:   255.255.255.0
+#   broadcast: 192.168.250.255
+#
+# You can then reach the Pi from the system's browser by going to
+#
+#   http://192.168.250.1
+#
+# or
+#
+#   http://octopi.local
+
+#auto eth0:1
+#iface eth0:1 inet static
+#  address 192.168.250.1
+#  netmask 255.255.255.0
+#  broadcast 192.168.250.255
+
+
+
+
