@@ -42,6 +42,10 @@ ps ax | grep avahi
     Check if Avahi service is installed/running
 sudo service avahi-daemon status
     Check the status of avahi daemon
+sudo apt-get install xrdp
+    Install Remote Desktop client
+sudo nano /etc/xrdp/xrdp.ini
+    Edit options for the Remote Desktop (xrdp) server 
 
 
 
