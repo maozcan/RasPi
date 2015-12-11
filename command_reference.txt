@@ -47,6 +47,7 @@ ps ax | grep avahi
     Check if Avahi service is installed/running
 sudo service avahi-daemon status
     Check the status of avahi daemon
+<<<<<<< HEAD
 gpio -v
     Show gpio verison
 gpio readall
@@ -114,6 +115,12 @@ find . -name *.log -print
     Find all files with log extension
 grep -Ril "text-to-find" .
     Find files containing text-to-find in current and sub directories
+=======
+sudo apt-get install xrdp
+    Install Remote Desktop client
+sudo nano /etc/xrdp/xrdp.ini
+    Edit options for the Remote Desktop (xrdp) server 
+>>>>>>> origin/master
 
 
 
